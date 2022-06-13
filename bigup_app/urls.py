@@ -7,6 +7,8 @@ from django.contrib.auth import views as auth_view
 
 urlpatterns = [
     path('',views.home, name='home'),
+    # registration paths
+    path('signup/', views.signup, name='signup'),
 
 ]
 
