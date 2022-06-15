@@ -60,6 +60,24 @@ def new_project(request):
         form = NewProjectForm()
     return render (request, 'bigup/project.html', {'form': form, 'current_user': current_user})
 
+# sear project view function
+@login_required
+def search_project(request):
+    if "project" in request.GET and request.GET["project"]:
+        search_term=request.GET.get("project")
+        searched_projects=Project.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request,'bigup/search.html',{"message":message, "projects":searched_projects, "project":search_term})
+    
+    else:
+        message = "Please enter search name"
+
+        return render(request, 'bigup/search.html',{"message":message})
+    
+
+
+
 # signup view function
 def signup_user(request):
     if request.method == "POST":
