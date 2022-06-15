@@ -45,7 +45,7 @@ def update_profile(request):
     return render( request=request, template_name='bigup/update_profile.html', context={"user":request.user, "profile_form": profile_form})
 
 # new project view function
-@login_required
+@login_required(login_url='login')
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
@@ -61,7 +61,7 @@ def new_project(request):
     return render (request, 'bigup/project.html', {'form': form, 'current_user': current_user})
 
 # sear project view function
-@login_required
+@login_required(login_url='login')
 def search_project(request):
     if "project" in request.GET and request.GET["project"]:
         search_term=request.GET.get("project")
@@ -123,6 +123,7 @@ def logout(request):
 
 
 # APIView section
+@login_required(login_url='login')
 def bigapi(request):
     return render(request,'bigup/api_page.html')
 
