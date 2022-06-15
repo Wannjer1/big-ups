@@ -8,7 +8,10 @@ from django.contrib.auth import views as auth_view
 urlpatterns = [
     path('',views.home, name='home'),
     # registration paths
-    path('signup/', views.signup, name='signup'),
+    path('signup/', views.signup_user, name='signup'),
+    path('login/', views.login_user, name='login'),
+    path('logout/',auth_view.LogoutView.as_view(template_name='registration/logout.html'), name="logout"),
+    
     # api paths
     path('bigapi/', views.bigapi, name='bigapi'),
     path('bigapi/api/profile/', views.ProfileList.as_view(), name='api-profile'),
