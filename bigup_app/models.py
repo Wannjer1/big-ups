@@ -9,6 +9,8 @@ from requests import delete
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='profilepic/', default='default.jpeg')
     user = models.OneToOneField(User,on_delete=models.CASCADE)
+# The user field has a OneToOneField that forms a direct connection to a user stored in the database
+# on_delete=models.CASCADE argument signifies that a Profile object will be deleted if the referenced User is deleted
     name = models.CharField(max_length=50,blank=True)
     bio = models.CharField(max_length=500)
     email = models.EmailField(max_length=250)
