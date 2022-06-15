@@ -24,7 +24,42 @@ def home(request):
 # profile view function
 @login_required
 def profile(request):
+
     return render(request, 'bigup/profile.html')
+
+# update profile function
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, ('Profile is updated successfully'))
+           
+        else:
+            messages.error(request,('Unable to complete request'))
+            return redirect("profile")
+    profile_form = UpdateProfileForm(instance=request.user)
+
+
+    return render( request=request, template_name='bigup/update_profile.html', context={"user":request.user, "profile_form": profile_form})
+
+# @login_required
+# def update_profile(request):
+#     profile_form = UpdateProfileForm()
+#     if request.method == 'POST':
+#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+#         if profile_form.is_valid():
+#             profile_form.save()
+#             messages.success(request, 'Profile is updated successfuly')
+#             return redirect (to='profile')
+#     else:
+#          profile_form = UpdateProfileForm(instance=request.user.profile)
+#     #   import the required forms and create instances of those forms depending on whether the request is get or post. 
+
+#     return render(request, 'bigup/update_profile.html', {'profile_form': profile_form})
+
 
 
 # signup view function
