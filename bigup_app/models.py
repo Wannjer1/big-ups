@@ -8,7 +8,7 @@ from requests import delete
 # Create your models here.
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='profilepic/', default='default.jpeg')
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=50,blank=True)
     bio = models.CharField(max_length=500)
     email = models.EmailField(max_length=250)
@@ -19,8 +19,14 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
-    def update_profile(self):
-        self.update_profile()
+    def update_bio(self, new_bio):
+        '''method to update user bio'''
+        self.bio = new_bio
+        self.save()
+
+    def update_profilepic(self, new_image):
+        self.photo = new_image
+        self.save()
 
     def __str__(self):
         return self.name
