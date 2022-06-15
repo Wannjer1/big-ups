@@ -10,8 +10,9 @@ urlpatterns = [
     # registration paths
     path('signup/', views.signup, name='signup'),
     # api paths
-    path('api/profile/', views.ProfileList.as_view(), name='api-profile'),
-    path('api/project/', views.ProjectList.as_view(), name='api-project'),
+    path('bigapi/', views.bigapi, name='bigapi'),
+    path('bigapi/api/profile/', views.ProfileList.as_view(), name='api-profile'),
+    path('bigapi/api/project/', views.ProjectList.as_view(), name='api-project'),
    
 ]
 
