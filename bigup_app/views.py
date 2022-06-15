@@ -44,23 +44,21 @@ def update_profile(request):
 
     return render( request=request, template_name='bigup/update_profile.html', context={"user":request.user, "profile_form": profile_form})
 
-# @login_required
-# def update_profile(request):
-#     profile_form = UpdateProfileForm()
-#     if request.method == 'POST':
-#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+# new project view function
+@login_required
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.save()
+        return redirect('home')
 
-#         if profile_form.is_valid():
-#             profile_form.save()
-#             messages.success(request, 'Profile is updated successfuly')
-#             return redirect (to='profile')
-#     else:
-#          profile_form = UpdateProfileForm(instance=request.user.profile)
-#     #   import the required forms and create instances of those forms depending on whether the request is get or post. 
-
-#     return render(request, 'bigup/update_profile.html', {'profile_form': profile_form})
-
-
+    else:
+        form = NewProjectForm()
+    return render (request, 'bigup/project.html', {'form': form, 'current_user': current_user})
 
 # signup view function
 def signup_user(request):
