@@ -21,6 +21,12 @@ def home(request):
 
     return render(request, 'bigup/index.html')
 
+# profile view function
+@login_required
+def profile(request):
+    return render(request, 'bigup/profile.html')
+
+
 # signup view function
 def signup_user(request):
     if request.method == "POST":
