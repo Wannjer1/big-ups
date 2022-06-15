@@ -9,7 +9,8 @@ urlpatterns = [
     path('',views.home, name='home'),
     # registration paths
     path('signup/', views.signup, name='signup'),
-
+    path('api/profile/', views.ProfileList.as_view(), name='api-profile'),
+   
 ]
 
 
