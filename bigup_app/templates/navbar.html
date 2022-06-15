@@ -1,53 +1,49 @@
 {% load bootstrap4 %}
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button> -->
-      <a class="navbar-brand " href="/"><span style="font-family: 'Calistoga', cursive;font-size:30px;color:#535250;">BigUp</a>
-      <a class="navbar-brand"  href="/"><span style="padding-right: 5px;font-weight: bold;margin-left:10px;color:#535250;">Home</span></a>
-      <a class="navbar-brand"  href="bigapi/"><span style="font-weight: bolder;color:#f26419;">API</span></a>
-     
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-      
- 
-    <!-- search form end -->
-      <!-- <div class="container" >
-        {% if user.is_authenticated %}
-        <div class='navbar-right'style="padding: 20px;">
-          <span style="font-weight: bold;">
-          <div class="" role="menu">
-            <a href="/awwards/profile/{{user.id}}" style="color: #0081a7;"><img src="{{request.user.profile.profile_pic.url}}" alt="" width="40px" height="40px" style="border-radius: 50%;"></a>
-            <small style="padding-right: 10px;">Welcome  <a href="/awwards/profile/{{user.id}}" style="color: #0081a7;">{{user.username}}</a></small>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">BigUp</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-            
-            
-            <a class="btn btn-info" style="border-radius: 25px;" href="/logout">Logout</a> 
-          </div>
-          </span>
-            {% else %}
-          <span style="font-weight: bold;">
-          <div class='navbar-right'style="padding: 20px;">
-              <small style="margin-right:10px">Are you a member?</small>
-              <a style="color: #0096c7; margin-right:10px" href="/accounts/login">Login</a>
-
-              <a  class="btn btn-sm btn-info" style="border-radius: 25px;" href="{% url 'register' %}">Sign Up</a>
-          </div>
-          <div class='navbar-right'style="padding: 20px;">
-            
-          </div>
-          </span>
-        </div>
-        {% endif %}
-      </div> -->
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="bigapi/">API</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'login' %}"
+          >Login <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+      </li>
+    </ul>
   </div>
-
 </nav>
