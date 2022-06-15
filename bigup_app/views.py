@@ -31,3 +31,10 @@ def signup(request):
         return redirect('login')
     else:
         return render(request,'registration/register.html')
+
+# APIView section
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles =Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
