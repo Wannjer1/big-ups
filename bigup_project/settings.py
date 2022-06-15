@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'bigup_app',
     'rest_framework',
+    'rest_framework.authtoken',
     'bootstrap4',
     'fontawesomefree',
     'crispy_forms',
@@ -46,6 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
