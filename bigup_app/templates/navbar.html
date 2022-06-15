@@ -24,10 +24,10 @@
         <a class="nav-link" href="bigapi/">API</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="bigapi/">Post project</a>
+        <a class="nav-link" href="{% url 'projectform' %}">Post project</a>
       </li>
     </ul>
-    <form class="form-inline  mr-auto my-lg-0">
+    <form class="form-inline  mr-auto my-lg-0" role="search" action="{% url 'searchproject' %}">
       <input
         class="form-control mr-sm-2"
         type="search"
