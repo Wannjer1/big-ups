@@ -7,7 +7,7 @@ from requests import delete
 
 # Create your models here.
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to='profilepic/', default='default.jpeg')
+    avatar = models.ImageField(upload_to='profilepic/', default='default.jpeg')
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=50,blank=True)
     bio = models.CharField(max_length=500)
