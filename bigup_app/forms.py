@@ -1,9 +1,9 @@
-import email
+
 from django import forms
 from .models import Profile, Project
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import ModelForm
+
 
 
 # signup form
@@ -26,5 +26,10 @@ class UpdateProfileForm(forms.ModelForm):
         model = Profile
         fields = ['avatar', 'bio','name', 'email']
 
+# post project form
+class NewProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['user','email']
 
     
