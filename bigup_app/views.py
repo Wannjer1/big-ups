@@ -33,6 +33,9 @@ def signup(request):
         return render(request,'registration/register.html')
 
 # APIView section
+def bigapi(request):
+    return render(request,'bigup/api_page.html')
+
 class ProfileList(APIView):
     def get(self, request, format=None):
         all_profiles =Profile.objects.all()
