@@ -38,7 +38,7 @@ class Project(models.Model):
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
-    link = models.URLField()
+    link = models.CharField(max_length=200)
 
     def save_project(self):
         self.save()

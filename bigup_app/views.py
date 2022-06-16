@@ -18,12 +18,14 @@ from .serializer import ProfileSerializer,ProjectSerializer
 # Create your views here.
 #home function that displays all posts
 def home(request):
+    projects =  Project.objects.all()
 
-    return render(request, 'bigup/index.html')
+    return render(request, 'bigup/index.html',{'projects':projects})
 
 # profile view function
 @login_required
 def profile(request):
+    
 
     return render(request, 'bigup/profile.html')
 
